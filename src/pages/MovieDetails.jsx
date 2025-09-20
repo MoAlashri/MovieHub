@@ -7,8 +7,12 @@ import { IoMdLink } from "react-icons/io";
 export default function MovieDetails() {
   const { movieId } = useParams();
 
-  const { movies: movie, loading, error } = useMovie(
-    `https://api.themoviedb.org/3/movie/${movieId}?api_key=c5b69f7cff083601fb5d9308f3e9b4b1`
+  const {
+    movies: movie,
+    loading,
+    error,
+  } = useMovie(
+    `https://api.themoviedb.org/3/movie/${movieId}?api_key=c5b69f7cff083601fb5d9308f3e9b4b1`,
   );
 
   if (loading) return <h2 className="text-center text-xl">Loading...</h2>;
@@ -18,7 +22,8 @@ export default function MovieDetails() {
         Error: {error.message}
       </h2>
     );
-  if (!movie) return <h2 className="text-center text-xl">No movie data found</h2>;
+  if (!movie)
+    return <h2 className="text-center text-xl">No movie data found</h2>;
 
   return (
     <div className="flex gap-4 p-6 max-w-[1000px] m-auto">
@@ -71,10 +76,13 @@ export default function MovieDetails() {
         </div>
 
         <div className="flex items-center gap-20 mt-4 text-gray-600">
-          <span>Duration: {`${Math.floor(movie.runtime / 60)}h ${movie.runtime % 60}m`}</span>
+          <span>
+            Duration:{" "}
+            {`${Math.floor(movie.runtime / 60)}h ${movie.runtime % 60}m`}
+          </span>
           <span>Language: {movie.original_language?.toUpperCase()}</span>
         </div>
-        
+
         <div className="mt-5">
           {movie.production_companies?.length > 0 &&
             movie.production_companies[0].logo_path && (

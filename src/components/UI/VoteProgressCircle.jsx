@@ -5,8 +5,13 @@ function VoteProgressCircle({ value }) {
   const color = numericValue >= 7 ? "success" : "warning";
   return (
     <Box position="relative" display="inline-flex">
-      <CircularProgress variant="determinate" value={percentage} color={color} thickness={6}   // الافتراضي 3.6، كل ما تزود الرقم الدايرة هتتخن
-        size={40} />
+      <CircularProgress
+        variant="determinate"
+        value={percentage}
+        color={color}
+        thickness={6} // الافتراضي 3.6، كل ما تزود الرقم الدايرة هتتخن
+        size={40}
+      />
       <Box
         top={0}
         left={0}
@@ -16,7 +21,6 @@ function VoteProgressCircle({ value }) {
         display="flex"
         alignItems="center"
         justifyContent="center"
-
       >
         <span className="text-sm font-bold text-white ">
           {numericValue.toFixed(1)}

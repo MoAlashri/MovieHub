@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function useMovie(URL) {
-  const [movies, setMovie] = useState(null); // واحد مش Array
+  const [movies, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -11,11 +11,9 @@ export default function useMovie(URL) {
       try {
         const { data } = await axios.get(URL);
 
-        // لو فيه results → يبقى API بيرجع list
         if (data.results) {
           setMovie(data.results);
         } else {
-          // غير كده → بيرجع Object واحد (فيلم واحد)
           setMovie(data);
         }
       } catch (err) {

@@ -1,11 +1,9 @@
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
-
 export default function Pagination() {
   return (
     <div className="flex items-center justify-center space-x-2 mt-6 mb-5">
-
       <button className="px-3 text-2xl py-1 rounded-md bg-gray-200 hover:bg-gray-300">
         <MdOutlineKeyboardArrowLeft />
       </button>
@@ -33,4 +31,3 @@ export default function Pagination() {
     </div>
   );
 }
-
