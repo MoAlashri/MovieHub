@@ -9,5 +9,33 @@
   box-sizing: border-box;
 }
 body {
-  @apply text-white bg-gray-950;
+  @apply text-white bg-gray-900;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 2s ease forwards;
 }
