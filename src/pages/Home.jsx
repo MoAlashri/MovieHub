@@ -1,14 +1,13 @@
 import React from "react";
-import MovieList from "../components/MovieList";
-import Pagination from "../components/UI/Pagination";
+
 import Landing from "../components/Landing";
+import TrendingMovies from "../components/TrendingMovies";
 
 export default function Home() {
   return (
     <>
     <Landing/>
-    <MovieList />
-    <Pagination />
+    <TrendingMovies/>
     </>
   );
 }

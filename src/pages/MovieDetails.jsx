@@ -1,3 +1,4 @@
+import React from "react";
 import { useParams } from "react-router-dom";
 import useMovie from "../hooks/useMovie";
 import { CiHeart } from "react-icons/ci";
@@ -26,6 +27,7 @@ export default function MovieDetails() {
     return <h2 className="text-center text-xl">No movie data found</h2>;
 
   return (
+    <>
     <div className="flex gap-4 p-6 max-w-[1000px] m-auto">
       <div className="w-1/4">
         <img
@@ -106,5 +108,6 @@ export default function MovieDetails() {
         </div>
       </div>
     </div>
+    </>
   );
 }
