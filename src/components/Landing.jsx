@@ -8,15 +8,17 @@ import useMovie from "../hooks/useMovie";
 
 export default function LandingSwiper() {
   const { movies, loading, error } = useMovie(
-    `https://api.themoviedb.org/3/movie/popular?api_key=c5b69f7cff083601fb5d9308f3e9b4b1`
+    `https://api.themoviedb.org/3/movie/popular?api_key=c5b69f7cff083601fb5d9308f3e9b4b1`,
   );
 
   if (loading)
     return <p className="text-white text-center mt-10 text-lg">Loading...</p>;
   if (error)
-    return <p className="text-red-500 text-center mt-10">Error loading movies.</p>;
+    return (
+      <p className="text-red-500 text-center mt-10">Error loading movies.</p>
+    );
 
-  const slides = movies.slice(0,5 ) ;
+  const slides = movies.slice(0, 5);
 
   return (
     <div className="w-full h-[87vh]">
