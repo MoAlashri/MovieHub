@@ -1,10 +1,13 @@
 import React from "react";
-import { FaBookmark } from "react-icons/fa";
+import { FaBookmark ,FaPlay} from "react-icons/fa";
+import { HiEye } from "react-icons/hi2";
 
+import { Link } from "react-router-dom";
 import useMovie from "../hooks/useMovie";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
+import SectionHeader from "./SectionHeader";
 
 export default function TrendingMovies() {
   const { movies, loading, error } = useMovie(
@@ -15,14 +18,12 @@ export default function TrendingMovies() {
   if (error) return <div className="m-10">Error: {error.message || error}</div>;
 
   return (
-    <section className="m-10 text-white">
-      <h2 className="text-2xl font-bold mb-6 border-l-8 border-red-600 pl-3">
-        Trending This Week 🔥
-      </h2>
+    <section className=" text-white m-4">
+           <SectionHeader title=' Trending This Week'  />
+     
 
       <Swiper
         modules={[Autoplay]}
-        // slidesPerView={ظ4}
         spaceBetween={30}
         loop={true}
         freeMode={true}
@@ -63,12 +64,26 @@ export default function TrendingMovies() {
                 <p className="text-yellow-400 text-sm flex items-center gap-1">
                   ⭐ {movie.vote_average?.toFixed(1)}
                 </p>
-                <button className="mt-3 bg-red-600 hover:bg-red-700 text-white text-sm font-medium px-3 py-1 rounded">
-                  View Details
-                </button>
+
+                <div className="flex flex-col gap-3 mt-2 ">
+                  <a
+                    href={`https://www.youtube.com/results?search_query=${movie.title}+trailer`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-2 bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg font-medium text-sm transition-all"
+                  >
+                    <FaPlay /> Watch Trailer
+                  </a>
+
+                  <Link
+                    to={`/movie/${movie.id}`}
+                    className="bg-white text-black hover:bg-gray-200 px-4 py-2 rounded-lg font-medium text-sm transition-all flex items-center gap-2   "
+                  >
+                   <HiEye  className="text-primary text-xl"/> View Details
+                  </Link>
+                </div>
               </div>
 
-              
               <button className="absolute top-3 right-3 text-white bg-black/50 hover:bg-red-600 p-2 rounded-full transition-all duration-300 text-xl">
                 <FaBookmark />
               </button>

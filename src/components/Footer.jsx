@@ -85,7 +85,7 @@ export default function Footer() {
         <p>
           © {new Date().getFullYear()}{" "}
           <span className="text-white font-semibold">MovieHub</span>. Built with
-          ❤️ by Mohamed Alashri.
+          ❤️ by Mohamed Alashry.
         </p>
       </div>
     </footer>
