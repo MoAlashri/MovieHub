@@ -1,23 +1,21 @@
 import React from "react";
 
-import Landing from "../components/Landing";
-import TrendingMovies from "../components/TrendingMovies";
-import PopularMovies from "../components/PopularMovies";
-import PopularTVShows from "../components/PopularTVShows";
-import TopRatedTVShows from "../components/TopRatedTVShows";
-// import EndHero from "../components/EndHero";
-import CreditsOutro from "../components/CinematicSpotlight";
+import HeroSwiper from "../components/movies/HeroSwiper";
+import TrendingMovies from "../components/movies/TrendingMovies";
+import PopularMovies from "../components/movies/PopularMovies";
+import PopularTVShows from "../components/movies/PopularTVShows";
+import TopRatedTVShows from "../components/movies/TopRatedTVShows";
+import CinematicSpotlight from "../components/movies/CinematicSpotlight";
 
 export default function Home() {
   return (
     <>
-      <Landing />
+      <HeroSwiper />
       <TrendingMovies />
       <PopularMovies />
       <PopularTVShows />
       <TopRatedTVShows />
-      {/* <EndHero /> */}
-      <CreditsOutro />
+      <CinematicSpotlight />
     </>
   );
 }

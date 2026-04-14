@@ -4,23 +4,32 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#0D0D0D", // خلفية أساسية (أسود سينمائي)
-        surface: "#1A1A1A", // كروت/سيكشن رمادي غامق
-        primary: "#E50914", // أحمر Netflix
-        secondary: "#F5C518", // أصفر IMDb (للهايلايت أو التقييم)
-        accent: "#6C63FF", // بنفسجي عصري
+        background: "#0D0D0D",
+        surface: "#1A1A1A",
+        primary: "#E50914",
+        secondary: "#F5C518",
+        accent: "#6C63FF",
         text: {
-          primary: "#FFFFFF", // نص أبيض
-          secondary: "#B3B3B3", // نص رمادي
+          primary: "#FFFFFF",
+          secondary: "#B3B3B3",
         },
         rating: {
-          good: "#21D07A", // تقييم عالي
-          medium: "#D2D531", // متوسط
-          bad: "#DB2360", // ضعيف
+          good: "#21D07A",
+          medium: "#D2D531",
+          bad: "#DB2360",
         },
       },
       fontFamily: {
+        sans: ["Inter", "sans-serif"],
         vibes: ["'Great Vibes'", "cursive"],
+      },
+      animation: {
+        shimmer: "shimmer 2s linear infinite",
+      },
+      keyframes: {
+        shimmer: {
+          to: { backgroundPosition: "200% center" },
+        },
       },
     },
   },
