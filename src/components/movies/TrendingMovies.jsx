@@ -1,11 +1,10 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode } from "swiper/modules";
 import "swiper/css";
-
 import useMovie from "../../hooks/useMovie";
 import SectionHeader from "../ui/SectionHeader";
 import { SkeletonCard } from "../ui/SkeletonCard";
-import MediaCard from "../ui/Mediacard";
+import MediaCard from "../ui/MediaCard";
 import { endpoints } from "../../utils/constants";
 
 const BREAKPOINTS = {
