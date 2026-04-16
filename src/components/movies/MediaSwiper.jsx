@@ -19,7 +19,7 @@ export default function MediaSwiper({
     url,
     title,
     subtitle,
-    linkPrefix = "/Movie-details",
+    linkPrefix = "/media/movie",
     accentColor = "primary",
     autoDelay = 4500,
     limit = 10,
@@ -52,10 +52,7 @@ export default function MediaSwiper({
                 >
                     {slides.map((item) => {
                         const itemTitle = item.title || item.name;
-                        const detailLink =
-                            linkPrefix === "/Movie-details"
-                                ? `${linkPrefix}/${item.id}`
-                                : linkPrefix;
+                        const detailLink = `${linkPrefix}/${item.id}`;
 
                         return (
                             <SwiperSlide key={item.id}>

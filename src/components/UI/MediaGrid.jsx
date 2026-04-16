@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaFilter, FaSearch } from "react-icons/fa";
 import axios from "axios";
-import MediaCard from "./MediaCard";
-
+import MediaCard from "./Mediacard";
 export default function MediaGrid({
     title,
     heroBg,
@@ -12,6 +11,7 @@ export default function MediaGrid({
     buildUrl,
     buildSearchUrl,
     getLinkTo,
+    mediaType = "movie",
 }) {
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -183,6 +183,7 @@ export default function MediaGrid({
                                     key={item.id}
                                     item={item}
                                     linkTo={getLinkTo(item)}
+                                    mediaType={mediaType}
                                 />
                             ))}
                         </motion.div>

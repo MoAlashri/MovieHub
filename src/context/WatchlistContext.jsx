@@ -30,8 +30,16 @@ export function WatchlistProvider({ children }) {
     );
   }, []);
 
+  const removeFromWatchlist = useCallback((id) => {
+    setWatchlist((prev) => prev.filter((m) => m.id !== id));
+  }, []);
+
+  const clearWatchlist = useCallback(() => {
+    setWatchlist([]);
+  }, []);
+
   return (
-    <WatchlistContext.Provider value={{ watchlist, isInWatchlist, toggleWatchlist }}>
+    <WatchlistContext.Provider value={{ watchlist, isInWatchlist, toggleWatchlist, removeFromWatchlist, clearWatchlist }}>
       {children}
     </WatchlistContext.Provider>
   );

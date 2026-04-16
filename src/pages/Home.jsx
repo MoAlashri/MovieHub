@@ -16,9 +16,7 @@ export default function Home() {
         url={endpoints.movie.popular()}
         title="Popular Movies"
         subtitle="Fan-favorites everyone is talking about"
-        linkPrefix="/Movie-details"
-        accentColor="primary"
-        autoDelay={4500}
+        linkPrefix="/media/movie"
       />
 
       {/* Popular TV Shows */}
@@ -26,9 +24,7 @@ export default function Home() {
         url={endpoints.tv.popular()}
         title="Popular TV Shows"
         subtitle="Stream the most-watched series"
-        linkPrefix="/Movie-details"
-        accentColor="blue-600"
-        autoDelay={5500}
+        linkPrefix="/media/tv"
       />
 
       {/* Popular TV Shows */}
@@ -36,9 +32,7 @@ export default function Home() {
         url={endpoints.tv.topRated()}
         title="Top Rated Shows"
         subtitle="The highest-rated series of all time"
-        linkPrefix="/Movie-details"
-        accentColor="primary"
-        autoDelay={3500}
+        linkPrefix="/media/tv"
         limit={25}
       />
 

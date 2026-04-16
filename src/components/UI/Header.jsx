@@ -62,9 +62,9 @@ export default function Header() {
     setSearchQuery("");
     setSearchResults([]);
     if (result.media_type === "movie" || result.title) {
-      navigate(`/Movie-details/${result.id}`);
+      navigate(`/media/movie/${result.id}`);
     } else {
-      navigate("/TvShow");
+      navigate(`/media/tv/${result.id}`);
     }
   }
 

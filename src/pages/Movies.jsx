@@ -18,7 +18,8 @@ export default function Movies() {
       sortOptions={SORT_OPTIONS.movie}
       buildUrl={buildUrl}
       buildSearchUrl={endpoints.movie.search}
-      getLinkTo={(item) => `/Movie-details/${item.id}`}
+      getLinkTo={(item) => `/media/movie/${item.id}`}
+      mediaType="movie"
     />
   );
 }

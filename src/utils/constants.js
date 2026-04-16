@@ -29,7 +29,9 @@ export const endpoints = {
     tv: {
         popular: () => `${BASE_URL}/tv/popular?api_key=${API_KEY}&language=en-US&page=1`,
         topRated: () => `${BASE_URL}/tv/top_rated?api_key=${API_KEY}&language=en-US&page=1`,
+        details: (id) => `${BASE_URL}/tv/${id}?api_key=${API_KEY}`,
         credits: (id) => `${BASE_URL}/tv/${id}/credits?api_key=${API_KEY}&language=en-US`,
+        similar: (id) => `${BASE_URL}/tv/${id}/similar?api_key=${API_KEY}`,
         discover: (params = "") => `${BASE_URL}/discover/tv?api_key=${API_KEY}${params}`,
         search: (query, page = 1) =>
             `${BASE_URL}/search/tv?api_key=${API_KEY}&query=${encodeURIComponent(query)}&page=${page}`,

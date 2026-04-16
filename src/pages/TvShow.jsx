@@ -20,7 +20,8 @@ export default function TvShow() {
       sortOptions={SORT_OPTIONS.tv}
       buildUrl={buildUrl}
       buildSearchUrl={endpoints.tv.search}
-      getLinkTo={(item) => `/Movie-details/${item.id}`}
+      getLinkTo={(item) => `/media/tv/${item.id}`}
+      mediaType="tv"
     />
   );
 }

@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import { useWatchlist } from "../context/WatchlistContext";
 
 export default function WatchList() {
-  const { watchlist, removeFromWatchlist, toggleWatchlist } = useWatchlist();
+  const { watchlist, removeFromWatchlist, clearWatchlist } = useWatchlist();
 
   function clearAll() {
-    watchlist.forEach((m) => removeFromWatchlist(m.id));
+    clearWatchlist();
   }
 
   return (
@@ -112,7 +112,7 @@ export default function WatchList() {
                   >
                     <img
                       src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                      alt={movie.title}
+                      alt={movie.title || movie.name}
                       className="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-700"
                     />
 
@@ -122,16 +122,16 @@ export default function WatchList() {
 
                     <button
                       onClick={() => removeFromWatchlist(movie.id)}
-                      className="absolute top-2 right-2 bg-red-600/80 hover:bg-red-600 text-white p-1.5 rounded-full transition-all text-sm"
+                      className="absolute top-2 right-2 bg-red-600/80 hover:bg-red-600 text-white p-1.5 rounded-full transition-all text-sm cursor-pointer z-50"
                     >
                       <FaTrash />
                     </button>
 
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex flex-col justify-end p-3">
-                      <h3 className="text-sm font-bold text-white mb-2 line-clamp-2">{movie.title}</h3>
+                      <h3 className="text-sm font-bold text-white mb-2 line-clamp-2">{movie.title || movie.name}</h3>
                       <div className="flex flex-col gap-1.5">
                         <a
-                          href={`https://www.youtube.com/results?search_query=${movie.title}+trailer`}
+                          href={`https://www.youtube.com/results?search_query=${encodeURIComponent(movie.title || movie.name)}+trailer`}
                           target="_blank"
                           rel="noreferrer"
                           className="flex items-center justify-center gap-1 bg-primary hover:bg-red-700 py-1.5 rounded-lg text-xs font-bold transition-all"
@@ -140,7 +140,7 @@ export default function WatchList() {
                           <FaPlay className="text-[10px]" /> Trailer
                         </a>
                         <Link
-                          to={`/Movie-details/${movie.id}`}
+                          to={`/media/${movie.mediaType ?? (movie.title ? "movie" : "tv")}/${movie.id}`}
                           className="flex items-center justify-center gap-1 bg-white/15 hover:bg-white/25 border border-white/20 py-1.5 rounded-lg text-xs font-bold transition-all"
                         >
                           Details

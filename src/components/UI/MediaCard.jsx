@@ -6,12 +6,17 @@ import { getPosterUrl, getTrailerUrl } from "../../utils/constants";
 import { useWatchlist } from "../../context/WatchlistContext";
 
 
-export default function MediaCard({ item, linkTo, showBookmark = true }) {
+export default function MediaCard({ item, linkTo, showBookmark = true, mediaType = "movie" }) {
     const { isInWatchlist, toggleWatchlist } = useWatchlist();
     const title = item.title || item.name;
     const poster = getPosterUrl(item.poster_path);
     const rating = item.vote_average?.toFixed(1);
     const inList = isInWatchlist(item.id);
+
+    function handleBookmark(e) {
+        e.stopPropagation();
+        toggleWatchlist({ ...item, mediaType });
+    }
 
     return (
         <motion.div
@@ -42,12 +47,12 @@ export default function MediaCard({ item, linkTo, showBookmark = true }) {
                 <FaStar className="text-[10px]" /> {rating}
             </div>
 
-            {/* Bookmark button */}
+            {/* Bookmark button — z-10 keeps it above the hover overlay */}
             {showBookmark && (
                 <button
-                    onClick={(e) => { e.stopPropagation(); toggleWatchlist(item); }}
+                    onClick={handleBookmark}
                     title={inList ? "Remove from Watchlist" : "Add to Watchlist"}
-                    className={`absolute top-2 right-2 p-1.5 rounded-full transition-all text-xs
+                    className={`absolute top-2 right-2 z-10 p-1.5 rounded-full transition-all text-xs
             ${inList
                             ? "bg-primary text-white shadow-md shadow-primary/40"
                             : "bg-black/60 text-white hover:bg-primary"
@@ -57,12 +62,12 @@ export default function MediaCard({ item, linkTo, showBookmark = true }) {
                 </button>
             )}
 
-            {/* Hover overlay */}
+            {/* Hover overlay — pointer-events-none so it never blocks the bookmark button */}
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent
                       opacity-0 group-hover:opacity-100 transition-opacity duration-300
-                      flex flex-col justify-end p-3">
+                      flex flex-col justify-end p-3 pointer-events-none">
                 <h3 className="text-sm font-bold text-white mb-2 line-clamp-2">{title}</h3>
-                <div className="flex flex-col gap-1.5">
+                <div className="flex flex-col gap-1.5 pointer-events-auto">
                     <a
                         href={getTrailerUrl(title)}
                         target="_blank"

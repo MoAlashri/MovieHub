@@ -5,7 +5,7 @@ import "swiper/css";
 import useMovie from "../../hooks/useMovie";
 import SectionHeader from "../ui/SectionHeader";
 import { SkeletonCard } from "../ui/SkeletonCard";
-import MediaCard from "../ui/MediaCard";
+import MediaCard from "../ui/Mediacard";
 import { endpoints } from "../../utils/constants";
 
 const BREAKPOINTS = {
@@ -47,7 +47,7 @@ export default function TrendingMovies() {
             <SwiperSlide key={movie.id}>
               <MediaCard
                 item={movie}
-                linkTo={`/Movie-details/${movie.id}`}
+                linkTo={`/media/movie/${movie.id}`}
               />
             </SwiperSlide>
           ))}
