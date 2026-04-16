@@ -10,6 +10,7 @@ import { HiSparkles } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 import { SkeletonBanner } from "../ui/SkeletonCard";
 import { useWatchlist } from "../../context/WatchlistContext";
+import { getTrailerUrl } from "../../utils/constants";
 
 
 const SWIPER_CONFIG = {
@@ -43,10 +44,10 @@ export default function LandingSwiper() {
     });
   };
 
-  const getTrailerUrl = (title) => {
-    const query = encodeURIComponent(`${title} official trailer`);
-    return `https://www.youtube.com/results?search_query=${query}`;
-  };
+  // const getTrailerUrl = (title) => {
+  //   const query = encodeURIComponent(`${title} official trailer`);
+  //   return `https://www.youtube.com/results?search_query=${query}`;
+  // };
 
   return (
     <div className="relative w-full h-[92vh] overflow-hidden">
@@ -110,7 +111,7 @@ export default function LandingSwiper() {
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-4">
                 <a
-                  href={getTrailerUrl(movie.t)}
+                  href={getTrailerUrl(movie.title || movie.name)}
                   target="_blank"
                   rel="noreferrer"
                   className="group flex items-center gap-3 bg-primary hover:bg-red-700 text-white font-bold px-7 py-3.5 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/40"
@@ -138,7 +139,6 @@ export default function LandingSwiper() {
                 </button>
               </div>
             </div>
-
           </SwiperSlide>
         ))}
       </Swiper>

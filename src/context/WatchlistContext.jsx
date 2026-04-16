@@ -1,19 +1,20 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
 
 const WatchlistContext = createContext(null);
+
+const STORAGE_KEY = "moviehub-watchlist";
 
 export function WatchlistProvider({ children }) {
   const [watchlist, setWatchlist] = useState(() => {
     try {
-      return JSON.parse(localStorage.getItem("moviehub-watchlist") || "[]");
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
     } catch {
       return [];
     }
   });
 
-  // Persist to localStorage whenever watchlist changes
   useEffect(() => {
-    localStorage.setItem("moviehub-watchlist", JSON.stringify(watchlist));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(watchlist));
   }, [watchlist]);
 
   const isInWatchlist = useCallback(
@@ -21,30 +22,16 @@ export function WatchlistProvider({ children }) {
     [watchlist],
   );
 
-  const addToWatchlist = useCallback((movie) => {
-    setWatchlist((prev) => {
-      if (prev.some((m) => m.id === movie.id)) return prev;
-      return [...prev, movie];
-    });
-  }, []);
-
-  const removeFromWatchlist = useCallback((id) => {
-    setWatchlist((prev) => prev.filter((m) => m.id !== id));
-  }, []);
-
   const toggleWatchlist = useCallback((movie) => {
-    setWatchlist((prev) => {
-      if (prev.some((m) => m.id === movie.id)) {
-        return prev.filter((m) => m.id !== movie.id);
-      }
-      return [...prev, movie];
-    });
+    setWatchlist((prev) =>
+      prev.some((m) => m.id === movie.id)
+        ? prev.filter((m) => m.id !== movie.id)
+        : [...prev, movie],
+    );
   }, []);
 
   return (
-    <WatchlistContext.Provider
-      value={{ watchlist, isInWatchlist, addToWatchlist, removeFromWatchlist, toggleWatchlist }}
-    >
+    <WatchlistContext.Provider value={{ watchlist, isInWatchlist, toggleWatchlist }}>
       {children}
     </WatchlistContext.Provider>
   );

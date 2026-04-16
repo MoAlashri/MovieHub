@@ -1,30 +1,32 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 
-export default function useMovie(URL) {
-  const [movies, setMovie] = useState(null);
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+export default function useMovie(url) {
+  const [movies, setMovies] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const { data } = await axios.get(URL);
+    if (!url) return;
+    let cancelled = false;
 
-        if (data.results) {
-          setMovie(data.results);
-        } else {
-          setMovie(data);
-        }
+    async function fetchData() {
+      setLoading(true);
+      setError(null);
+      try {
+        const { data } = await axios.get(url);
+        if (!cancelled) setMovies(data.results ?? data);
       } catch (err) {
-        setError(err);
+        if (!cancelled) setError(err);
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     }
 
     fetchData();
-  }, [URL]);
+    return () => { cancelled = true; };
+  }, [url]);
 
   return { movies, loading, error };
 }

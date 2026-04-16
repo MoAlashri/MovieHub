@@ -1,6 +1,6 @@
 import React from "react";
 
-export function SkeletonCard({ height = "450px" }) {
+export function SkeletonCard({ height = "4200px" }) {
   return (
     <div
       className="animate-pulse rounded-xl overflow-hidden bg-gray-800"
@@ -41,3 +41,13 @@ export function SkeletonMovieDetail() {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
