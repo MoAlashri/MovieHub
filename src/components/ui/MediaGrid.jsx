@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaFilter, FaSearch } from "react-icons/fa";
 import axios from "axios";
-import MediaCard from "./Mediacard";
+import MediaCard from "./MediaCard";
 export default function MediaGrid({
     title,
     heroBg,
