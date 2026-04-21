@@ -7,6 +7,7 @@ import {
 import { BiCameraMovie } from "react-icons/bi";
 import { LuTv } from "react-icons/lu";
 import { FaBookmark } from "react-icons/fa";
+import {FaLinkedin} from "react-icons/fa";
 
 const links = {
   Explore: [
@@ -41,10 +42,10 @@ export default function Footer() {
             {/* Socials */}
             <div className="flex gap-3">
               {[
-                { icon: <FaFacebookF />, href: "#" },
-                { icon: <FaTwitter />, href: "#" },
-                { icon: <FaInstagram />, href: "#" },
-                { icon: <FaGithub />, href: "https://github.com" },
+                { icon: <FaTwitter />, href: "https://x.com/MoAmged19" },
+                { icon: <FaInstagram />, href: "https://www.instagram.com/mohamed_amged19" },
+                { icon: <FaLinkedin />, href: "www.linkedin.com/in/mohamedalashry19" },
+                { icon: <FaGithub />, href: "https://github.com/MoAlashri" },
               ].map((s, i) => (
                 <a
                   key={i}
