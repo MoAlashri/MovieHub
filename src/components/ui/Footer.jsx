@@ -44,7 +44,7 @@ export default function Footer() {
               {[
                 { icon: <FaTwitter />, href: "https://x.com/MoAmged19" },
                 { icon: <FaInstagram />, href: "https://www.instagram.com/mohamed_amged19" },
-                { icon: <FaLinkedin />, href: "www.linkedin.com/in/mohamedalashry19" },
+                { icon: <FaLinkedin />, href: "https://www.linkedin.com/in/mohamedalashry19/" },
                 { icon: <FaGithub />, href: "https://github.com/MoAlashri" },
               ].map((s, i) => (
                 <a
