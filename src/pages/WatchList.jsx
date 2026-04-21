@@ -122,7 +122,7 @@ export default function WatchList() {
 
                     <button
                       onClick={() => removeFromWatchlist(movie.id)}
-                      className="absolute top-2 right-2 bg-red-600/80 hover:bg-red-600 text-white p-1.5 rounded-full transition-all text-sm cursor-pointer z-50"
+                      className="absolute top-2 right-2 bg-red-600/80 hover:bg-red-600 text-white p-1.5 rounded-full transition-all text-sm cursor-pointer z-10"
                     >
                       <FaTrash />
                     </button>

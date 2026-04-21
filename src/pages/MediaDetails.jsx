@@ -12,7 +12,7 @@ import { useWatchlist } from "../context/WatchlistContext";
 import { SkeletonMovieDetail } from "../components/ui/SkeletonCard";
 import { endpoints, BASE_URL, API_KEY, getBackdropUrl, getPosterUrl, getTrailerUrl } from "../utils/constants";
 
-// ─── Helpers ──────────────────────────────────────────────────────────────────
+//  Helpers
 function ratingColor(v) {
   if (v >= 7.5) return "text-green-400";
   if (v >= 6)   return "text-yellow-400";
@@ -24,7 +24,7 @@ function runtime(mins) {
   return `${Math.floor(mins / 60)}h ${mins % 60}m`;
 }
 
-// ─── Sub-components ───────────────────────────────────────────────────────────
+//  Sub-components
 function SectionTitle({ children, accent = "bg-primary" }) {
   return (
     <h2 className="text-2xl font-black mb-6 flex items-center gap-3">
@@ -113,23 +113,19 @@ function ErrorState({ type }) {
   );
 }
 
-// ─── Main Component ───────────────────────────────────────────────────────────
+//  Main Component 
 export default function MediaDetails() {
-  // Support both new route (/media/:type/:id) and legacy routes
-  // (/Movie-details/:movieId  and  /Tv-details/:showId)
   const params = useParams();
   const type = params.type ?? (params.movieId ? "movie" : "tv");
   const id   = params.id   ?? params.movieId ?? params.showId;
   const isTV = type === "tv";
-
-  // Accent colours that change based on media type
   const accentClass   = isTV ? "bg-blue-500"  : "bg-primary";
   const accentText    = isTV ? "text-blue-400" : "text-primary";
   const accentBtn     = isTV ? "bg-blue-600 hover:bg-blue-700"      : "bg-primary hover:bg-red-700";
   const accentBookmark = isTV ? "bg-blue-600 border-blue-600 shadow-blue-500/30" : "bg-primary border-primary shadow-primary/30";
   const accentGlow    = isTV ? "bg-blue-500/10" : "bg-primary/10";
 
-  // Fetch details
+
   const detailsUrl = isTV
     ? `${BASE_URL}/tv/${id}?api_key=${API_KEY}`
     : endpoints.movie.details(id);
